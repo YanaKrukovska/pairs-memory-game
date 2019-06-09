@@ -12,27 +12,34 @@ public class BoardPanel extends JPanel {
 
     public BoardPanel() {
 
-        setSize(PairsGame.FRAME_WIDTH, PairsGame.FRAME_HEIGHT);
+        setBackground(Color.WHITE);
 
     }
 
 
     public void updateBoard(int level) {
-        if (level == 1){
+        if (level == 1) {
+
+            setLayout(new GridLayout(2, 3));
+            ImageIcon level1Icon1 = new ImageIcon("C:\\IdeaProjects\\pairs-memory-game\\src\\images\\cake1.jpg");
+            ImageIcon level1Icon2 = new ImageIcon("C:\\IdeaProjects\\pairs-memory-game\\src\\images\\cake2.jpg");
+            Image image1 = level1Icon1.getImage();
+            Image image2 = level1Icon2.getImage();
+            level1Icon1 = new ImageIcon(image1);
+            level1Icon2 = new ImageIcon(image2);
+            JLabel level1Label1 = new JLabel(level1Icon1);
+            JLabel level1Label2 = new JLabel(level1Icon2);
 
 
-        this.setLayout(new GridLayout(2,2));
-            this.add(card1);
-            this.add(card2);
-            this.add(card3);
-            this.add(card4);
-            System.out.println("level 1");
-            revalidate();
+            add(level1Label1);
+            add(level1Label2);
+            add(card3);
+            add(card4);
+
 
         }
 
     }
-
 
 
 }
