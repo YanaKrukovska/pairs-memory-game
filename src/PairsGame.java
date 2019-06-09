@@ -7,9 +7,9 @@ public class PairsGame extends JFrame {
 
     public final static int FRAME_WIDTH = 800;
     public final static int FRAME_HEIGHT = 500;
-    private final static int TOP_PANEL_HEIGHT = FRAME_HEIGHT / 5;
+    public final static int TOP_PANEL_HEIGHT = FRAME_HEIGHT / 5;
+    public final static int PANEL_HEIGHT = FRAME_HEIGHT - TOP_PANEL_HEIGHT;
     public JButton okayButton;
-    public boolean readyToPlay = false;
     private int levelCount = 0;
 
 
@@ -17,17 +17,20 @@ public class PairsGame extends JFrame {
 
         setTitle("Pairs");
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
 
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(null);
+        menuPanel.setBackground(Color.BLUE);
         JTextField loginField = setStartComponents(menuPanel);
-        menuPanel.setBounds(0, 0, getWidth(), TOP_PANEL_HEIGHT);
+        menuPanel.setBounds(0, 0, getWidth(), getHeight() / 5);
 
 
         BoardPanel gameBoard = new BoardPanel();
-        gameBoard.setBounds(0, TOP_PANEL_HEIGHT, getWidth(), getHeight() - TOP_PANEL_HEIGHT);
+        gameBoard.setBounds(0, TOP_PANEL_HEIGHT, FRAME_WIDTH, PANEL_HEIGHT);
 
 
         okayButton.addActionListener(new ActionListener() {
@@ -35,7 +38,6 @@ public class PairsGame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == okayButton) {
                     String username = loginField.getText();
-                    readyToPlay = true;
 
                     menuPanel.removeAll();
                     menuPanel.repaint();
@@ -44,10 +46,12 @@ public class PairsGame extends JFrame {
                     usernameLabel.setFont(new Font("Serif", Font.BOLD, 16));
                     level.setFont(new Font("Serif", Font.BOLD, 16));
 
-
                     menuPanel.add(usernameLabel).setBounds(10, 20, 100, 20);
                     menuPanel.add(level).setBounds(110, 20, 100, 20);
                     gameBoard.updateBoard(levelCount);
+                    gameBoard.setBounds(0, getHeight() / 5, getWidth(), getHeight() - (getHeight() / 5));
+                    menuPanel.revalidate();
+                    gameBoard.revalidate();
                 }
             }
         });
@@ -77,5 +81,6 @@ public class PairsGame extends JFrame {
         menuPanel.add(okayButton);
         return loginField;
     }
+
 
 }
