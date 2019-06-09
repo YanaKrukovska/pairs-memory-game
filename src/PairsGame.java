@@ -16,12 +16,12 @@ public class PairsGame extends JFrame {
     public PairsGame() {
 
         setTitle("Pairs");
-        setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        setSize(FRAME_WIDTH + 15, FRAME_HEIGHT + 40);
 
-       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-
+        setLayout(null);
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(null);
         menuPanel.setBackground(Color.BLUE);
@@ -31,7 +31,6 @@ public class PairsGame extends JFrame {
 
         BoardPanel gameBoard = new BoardPanel();
         gameBoard.setBounds(0, TOP_PANEL_HEIGHT, FRAME_WIDTH, PANEL_HEIGHT);
-
 
         okayButton.addActionListener(new ActionListener() {
             @Override
@@ -48,13 +47,13 @@ public class PairsGame extends JFrame {
 
                     menuPanel.add(usernameLabel).setBounds(10, 20, 100, 20);
                     menuPanel.add(level).setBounds(110, 20, 100, 20);
-                    gameBoard.updateBoard(levelCount);
-                    gameBoard.setBounds(0, getHeight() / 5, getWidth(), getHeight() - (getHeight() / 5));
                     menuPanel.revalidate();
-                    gameBoard.revalidate();
+                    gameBoard.updateBoard(levelCount);
+                    gameBoard.setBounds(0, TOP_PANEL_HEIGHT, FRAME_WIDTH, PANEL_HEIGHT);
                 }
             }
         });
+
 
         add(menuPanel);
         add(gameBoard);
