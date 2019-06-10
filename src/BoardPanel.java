@@ -165,6 +165,129 @@ public class BoardPanel extends JPanel {
 
 
         }
+        
+        if (level == 3) {
+            setBounds(0, PairsGame.TOP_PANEL_HEIGHT + 2, PairsGame.FRAME_WIDTH, PairsGame.PANEL_HEIGHT);
+
+            setLayout(new GridLayout(4, 4));
+            ImageIcon cardBack = new ImageIcon("C:\\IdeaProjects\\pairs-memory-game\\src\\images\\backCard.jpg");
+            ImageIcon level3Icon1 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-2.jpg");
+            ImageIcon level3Icon2 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\barbie-1.jpg");
+            ImageIcon level3Icon3 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-6.jpg");
+            ImageIcon level3Icon4 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\doll.jpg");
+            ImageIcon level3Icon5 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-6.jpg");
+            ImageIcon level3Icon6 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-4.jpg");
+            ImageIcon level3Icon7 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-1.jpg");
+            ImageIcon level3Icon8 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-3.jpg");
+            ImageIcon level3Icon9 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-2.jpg");
+            ImageIcon level3Icon10 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\barbie-1.jpg");
+            ImageIcon level3Icon11 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-6.jpg");
+            ImageIcon level3Icon12 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\doll.jpg");
+            ImageIcon level3Icon13 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-6.jpg");
+            ImageIcon level3Icon14 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-4.jpg");
+            ImageIcon level3Icon15 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-1.jpg");
+            ImageIcon level3Icon16 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-3.jpg");
+
+            Image image1 = level3Icon1.getImage();
+            Image image2 = level3Icon2.getImage();
+            Image image3 = level3Icon3.getImage();
+            Image image4 = level3Icon4.getImage();
+            Image image5 = level3Icon5.getImage();
+            Image image6 = level3Icon6.getImage();
+            Image image7 = level3Icon7.getImage();
+            Image image8 = level3Icon8.getImage();
+            Image image9 = level3Icon9.getImage();
+            Image image10 = level3Icon10.getImage();
+            Image image11 = level3Icon11.getImage();
+            Image image12 = level3Icon12.getImage();
+            Image image13 = level3Icon13.getImage();
+            Image image14 = level3Icon14.getImage();
+            Image image15 = level3Icon15.getImage();
+            Image image16 = level3Icon16.getImage();
+
+            level3Icon1 = new ImageIcon(image1);
+            level3Icon2 = new ImageIcon(image2);
+            level3Icon3 = new ImageIcon(image3);
+            level3Icon4 = new ImageIcon(image4);
+            level3Icon5 = new ImageIcon(image5);
+            level3Icon6 = new ImageIcon(image6);
+            level3Icon7 = new ImageIcon(image7);
+            level3Icon8 = new ImageIcon(image8);
+            level3Icon9 = new ImageIcon(image9);
+            level3Icon10 = new ImageIcon(image10);
+            level3Icon11 = new ImageIcon(image11);
+            level3Icon12 = new ImageIcon(image12);
+            level3Icon13 = new ImageIcon(image13);
+            level3Icon14 = new ImageIcon(image14);
+            level3Icon15 = new ImageIcon(image15);
+            level3Icon16 = new ImageIcon(image16);
+
+            JLabel level3Label1 = new JLabel(level3Icon1);
+            JLabel level3Label2 = new JLabel(level3Icon2);
+            JLabel level3Label3 = new JLabel(level3Icon3);
+            JLabel level3Label4 = new JLabel(level3Icon4);
+            JLabel level3Label5 = new JLabel(level3Icon5);
+            JLabel level3Label6 = new JLabel(level3Icon6);
+            JLabel level3Label7 = new JLabel(level3Icon7);
+            JLabel level3Label8 = new JLabel(level3Icon8);
+            JLabel level3Label9 = new JLabel(level3Icon9);
+            JLabel level3Label10 = new JLabel(level3Icon10);
+            JLabel level3Label11 = new JLabel(level3Icon11);
+            JLabel level3Label12 = new JLabel(level3Icon12);
+            JLabel level3Label13 = new JLabel(level3Icon13);
+            JLabel level3Label14 = new JLabel(level3Icon14);
+            JLabel level3Label15 = new JLabel(level3Icon15);
+            JLabel level3Label16 = new JLabel(level3Icon16);
+
+            Timer showCardsTimer = new Timer(1500, new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    level3Label1.setIcon(cardBack);
+                    level3Label2.setIcon(cardBack);
+                    level3Label3.setIcon(cardBack);
+                    level3Label4.setIcon(cardBack);
+                    level3Label5.setIcon(cardBack);
+                    level3Label6.setIcon(cardBack);
+                    level3Label7.setIcon(cardBack);
+                    level3Label8.setIcon(cardBack);
+                    level3Label9.setIcon(cardBack);
+                    level3Label10.setIcon(cardBack);
+                    level3Label11.setIcon(cardBack);
+                    level3Label12.setIcon(cardBack);
+                    level3Label13.setIcon(cardBack);
+                    level3Label14.setIcon(cardBack);
+                    level3Label15.setIcon(cardBack);
+                    level3Label16.setIcon(cardBack);
+                }
+            });
+            showCardsTimer.setRepeats(false);
+            showCardsTimer.start();
+
+
+            add(level3Label1);
+            add(level3Label2);
+            add(level3Label3);
+            add(level3Label4);
+            add(level3Label5);
+            add(level3Label6);
+            add(level3Label7);
+            add(level3Label8);
+            add(level3Label9);
+            add(level3Label10);
+            add(level3Label11);
+            add(level3Label12);
+            add(level3Label13);
+            add(level3Label14);
+            add(level3Label15);
+            add(level3Label16);
+
+            revalidate();
+
+
+
+
+        }
 
 
     }
