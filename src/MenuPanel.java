@@ -46,7 +46,7 @@ public class MenuPanel extends JPanel {
         levelLabel = new JLabel("Level: " + currentLevel);
         levelLabel.setFont(new Font("Serif", Font.PLAIN, 16));
 
-        add(levelLabel).setBounds((username.length()*20) + 10, 20, 100, 20);
+        add(levelLabel).setBounds((usernameLabelLength()) + 10, 20, 100, 20);
 
         repaint();
     }
@@ -59,11 +59,15 @@ public class MenuPanel extends JPanel {
         levelLabel = new JLabel("Level: " + currentLevel);
         levelLabel.setFont(new Font("Serif", Font.PLAIN, 16));
 
-        add(usernameLabel).setBounds(10, 20, username.length()*20, 20);
-        add(levelLabel).setBounds((username.length()*20) + 10, 20, 100, 20);
+        add(usernameLabel).setBounds(10, 20, usernameLabelLength(), 20);
+        add(levelLabel).setBounds(usernameLabelLength() + 10, 20, 100, 20);
 
         repaint();
         revalidate();
+    }
+
+    private int usernameLabelLength() {
+        return username.length() * 20;
     }
 
     public void finalUpdate() {
