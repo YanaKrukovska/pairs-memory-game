@@ -1,295 +1,173 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Random;
 
 
 public class BoardPanel extends JPanel {
 
 
-    public BoardPanel() {
+    private Card[] cardsLevel1 = new Card[]{new Card("cake1.jpg"), new Card("cake2.jpg"),
+            new Card("cake1.jpg"), new Card("cake2.jpg")};
+    private Card[] cardsLevel2 = new Card[]{new Card("espresso.jpg"), new Card("kakao.jpg"),
+            new Card("latte1.jpg"), new Card("kakao.jpg"), new Card("latte1.jpg"),
+            new Card("espresso.jpg")
+    };
 
+    private Card[] cardsLevel3 = new Card[]{new Card("doll1.jpg"), new Card("doll2.jpg"),
+            new Card("doll3.jpg"), new Card("doll4.jpg"), new Card("doll1.jpg"),
+            new Card("doll2.jpg"), new Card("doll3.jpg"), new Card("doll4.jpg")
+    };
+
+    private Card[] cardsLevel4 = new Card[]{new Card("bieber.jpg"), new Card("vynnyk.jpg"),
+            new Card("zibrov.jpg"), new Card("poplavskyi.jpg"), new Card("kirkorov.jpg"),
+            new Card("bieber.jpg"), new Card("vynnyk.jpg"),
+            new Card("zibrov.jpg"), new Card("poplavskyi.jpg"), new Card("kirkorov.jpg")
+    };
+
+    private Card[] cardsLevel5 = new Card[]{new Card("teteriv.jpg"), new Card("rogan.jpg"),
+            new Card("lvivske.jpg"), new Card("zhyguli.jpg"), new Card("chernigivske.jpg"),
+            new Card("teteriv.jpg"), new Card("rogan.jpg"), new Card("lvivske.jpg"),
+            new Card("zhyguli.jpg"), new Card("chernigivske.jpg"), new Card("opilla.jpg"),
+            new Card("opilla.jpg")
+    };
+    private int cardsDeleted = 0;
+
+    private int currentLevel = 0;
+    private MenuPanel menuPanel;
+
+    public BoardPanel(MenuPanel menuPanel) {
+        this.menuPanel = menuPanel;
         setBackground(Color.WHITE);
 
     }
 
 
     public void updateBoard(int level) {
-
+        currentLevel = level;
+        setBounds(0, PairsGame.TOP_PANEL_HEIGHT + 2, PairsGame.FRAME_WIDTH, PairsGame.PANEL_HEIGHT);
 
         if (level == 1) {
-            setBounds(0, PairsGame.TOP_PANEL_HEIGHT + 2, PairsGame.FRAME_WIDTH, PairsGame.PANEL_HEIGHT);
-
             setLayout(new GridLayout(2, 2));
-            ImageIcon cardBack = new ImageIcon("C:\\IdeaProjects\\pairs-memory-game\\src\\images\\backCard.jpg");
-            ImageIcon level1Icon1 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\cake1.jpg");
-            ImageIcon level1Icon2 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\cake2.jpg");
-            ImageIcon level1Icon3 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\cake1.jpg");
-            ImageIcon level1Icon4 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\cake2.jpg");
-
-            Image image1 = level1Icon1.getImage();
-            Image image2 = level1Icon2.getImage();
-            Image image3 = level1Icon3.getImage();
-            Image image4 = level1Icon4.getImage();
-
-            level1Icon1 = new ImageIcon(image1);
-            level1Icon2 = new ImageIcon(image2);
-            level1Icon3 = new ImageIcon(image3);
-            level1Icon4 = new ImageIcon(image4);
-
-            JLabel level1Label1 = new JLabel(level1Icon1);
-            JLabel level1Label2 = new JLabel(level1Icon2);
-            JLabel level1Label3 = new JLabel(level1Icon3);
-            JLabel level1Label4 = new JLabel(level1Icon4);
-
-            Timer showCardsTimer = new Timer(1500, new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    level1Label1.setIcon(cardBack);
-                    level1Label2.setIcon(cardBack);
-                    level1Label3.setIcon(cardBack);
-                    level1Label4.setIcon(cardBack);
-                }
-            });
-            showCardsTimer.setRepeats(false);
-            showCardsTimer.start();
-
-
-            add(level1Label1);
-            add(level1Label2);
-            add(level1Label3);
-            add(level1Label4);
-
-            revalidate();
-
-
-
-
+            showCards(cardsLevel1, 4);
+            addCards(cardsLevel1, 4);
+        } else if (level == 2) {
+            setLayout(new GridLayout(2, 3));
+            showCards(cardsLevel2, 6);
+            addCards(cardsLevel2, 6);
+        } else if (level == 3) {
+            setLayout(new GridLayout(2, 4));
+            showCards(cardsLevel3, 8);
+            addCards(cardsLevel3, 8);
+        } else if (level == 4) {
+            setLayout(new GridLayout(2, 5));
+            showCards(cardsLevel4, 10);
+            addCards(cardsLevel4, 10);
+        } else if (level == 5) {
+            setLayout(new GridLayout(3, 4));
+            showCards(cardsLevel5,12);
+            addCards(cardsLevel5, 12);
         }
 
-          if (level == 2) {
-            setBounds(0, PairsGame.TOP_PANEL_HEIGHT + 2, PairsGame.FRAME_WIDTH, PairsGame.PANEL_HEIGHT);
-
-            setLayout(new GridLayout(3, 3));
-            ImageIcon cardBack = new ImageIcon("C:\\IdeaProjects\\pairs-memory-game\\src\\images\\backCard.jpg");
-            ImageIcon level2Icon1 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\espresso.jpg");
-            ImageIcon level2Icon2 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\kakao.jpg");
-            ImageIcon level2Icon3 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\latte1.jpg");
-            ImageIcon level2Icon4 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\espresso.jpg");
-            ImageIcon level2Icon5 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\kakao.jpg");
-            ImageIcon level2Icon6 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\latte1.jpg");
-            ImageIcon level2Icon7 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\tea-1.jpg");
-            ImageIcon level2Icon8 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\matcha.jpg");
-            ImageIcon level2Icon9 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\moxito.jpg");
-            ImageIcon level2Icon10 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\tea-1.jpg");
-            ImageIcon level2Icon11 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\matcha.jpg");
-            ImageIcon level2Icon12 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\moxito.jpg");
-
-            Image image1 = level2Icon1.getImage();
-            Image image2 = level2Icon2.getImage();
-            Image image3 = level2Icon3.getImage();
-            Image image4 = level2Icon4.getImage();
-            Image image5 = level2Icon5.getImage();
-            Image image6 = level2Icon6.getImage();
-            Image image7 = level2Icon7.getImage();
-            Image image8 = level2Icon8.getImage();
-            Image image9 = level2Icon9.getImage();
-            Image image10 = level2Icon10.getImage();
-            Image image11 = level2Icon11.getImage();
-            Image image12 = level2Icon12.getImage();
-
-            level2Icon1 = new ImageIcon(image1);
-            level2Icon2 = new ImageIcon(image2);
-            level2Icon3 = new ImageIcon(image3);
-            level2Icon4 = new ImageIcon(image4);
-            level2Icon5 = new ImageIcon(image5);
-            level2Icon6 = new ImageIcon(image6);
-            level2Icon7 = new ImageIcon(image7);
-            level2Icon8 = new ImageIcon(image8);
-            level2Icon9 = new ImageIcon(image9);
-            level2Icon10 = new ImageIcon(image10);
-            level2Icon11 = new ImageIcon(image11);
-            level2Icon12 = new ImageIcon(image12);
-
-            JLabel level2Label1 = new JLabel(level2Icon1);
-            JLabel level2Label2 = new JLabel(level2Icon2);
-            JLabel level2Label3 = new JLabel(level2Icon3);
-            JLabel level2Label4 = new JLabel(level2Icon4);
-            JLabel level2Label5 = new JLabel(level2Icon5);
-            JLabel level2Label6 = new JLabel(level2Icon6);
-            JLabel level2Label7 = new JLabel(level2Icon7);
-            JLabel level2Label8 = new JLabel(level2Icon8);
-            JLabel level2Label9 = new JLabel(level2Icon9);
-            JLabel level2Label10 = new JLabel(level2Icon10);
-            JLabel level2Label11 = new JLabel(level2Icon11);
-            JLabel level2Label12 = new JLabel(level2Icon12);
-
-            Timer showCardsTimer = new Timer(1500, new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    level2Label1.setIcon(cardBack);
-                    level2Label2.setIcon(cardBack);
-                    level2Label3.setIcon(cardBack);
-                    level2Label4.setIcon(cardBack);
-                    level2Label5.setIcon(cardBack);
-                    level2Label6.setIcon(cardBack);
-                    level2Label7.setIcon(cardBack);
-                    level2Label8.setIcon(cardBack);
-                    level2Label9.setIcon(cardBack);
-                    level2Label10.setIcon(cardBack);
-                    level2Label11.setIcon(cardBack);
-                    level2Label12.setIcon(cardBack);
-                }
-            });
-            showCardsTimer.setRepeats(false);
-            showCardsTimer.start();
-
-
-            add(level2Label1);
-            add(level2Label2);
-            add(level2Label3);
-            add(level2Label4);
-            add(level2Label5);
-            add(level2Label6);
-            add(level2Label7);
-            add(level2Label8);
-            add(level2Label9);
-            add(level2Label10);
-            add(level2Label11);
-            add(level2Label12);
-
-            revalidate();
-
-
-
-
-        }
-        
-        if (level == 3) {
-            setBounds(0, PairsGame.TOP_PANEL_HEIGHT + 2, PairsGame.FRAME_WIDTH, PairsGame.PANEL_HEIGHT);
-
-            setLayout(new GridLayout(4, 4));
-            ImageIcon cardBack = new ImageIcon("C:\\IdeaProjects\\pairs-memory-game\\src\\images\\backCard.jpg");
-            ImageIcon level3Icon1 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-2.jpg");
-            ImageIcon level3Icon2 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\barbie-1.jpg");
-            ImageIcon level3Icon3 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-6.jpg");
-            ImageIcon level3Icon4 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\doll.jpg");
-            ImageIcon level3Icon5 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-6.jpg");
-            ImageIcon level3Icon6 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-4.jpg");
-            ImageIcon level3Icon7 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-1.jpg");
-            ImageIcon level3Icon8 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-3.jpg");
-            ImageIcon level3Icon9 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-2.jpg");
-            ImageIcon level3Icon10 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\barbie-1.jpg");
-            ImageIcon level3Icon11 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\bratz-6.jpg");
-            ImageIcon level3Icon12 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\doll.jpg");
-            ImageIcon level3Icon13 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-6.jpg");
-            ImageIcon level3Icon14 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-4.jpg");
-            ImageIcon level3Icon15 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\ken-1.jpg");
-            ImageIcon level3Icon16 = new ImageIcon("C:\\Users\\Марія\\Documents\\Лабораторна_Синельник\\Memory Game\\monster-high-3.jpg");
-
-            Image image1 = level3Icon1.getImage();
-            Image image2 = level3Icon2.getImage();
-            Image image3 = level3Icon3.getImage();
-            Image image4 = level3Icon4.getImage();
-            Image image5 = level3Icon5.getImage();
-            Image image6 = level3Icon6.getImage();
-            Image image7 = level3Icon7.getImage();
-            Image image8 = level3Icon8.getImage();
-            Image image9 = level3Icon9.getImage();
-            Image image10 = level3Icon10.getImage();
-            Image image11 = level3Icon11.getImage();
-            Image image12 = level3Icon12.getImage();
-            Image image13 = level3Icon13.getImage();
-            Image image14 = level3Icon14.getImage();
-            Image image15 = level3Icon15.getImage();
-            Image image16 = level3Icon16.getImage();
-
-            level3Icon1 = new ImageIcon(image1);
-            level3Icon2 = new ImageIcon(image2);
-            level3Icon3 = new ImageIcon(image3);
-            level3Icon4 = new ImageIcon(image4);
-            level3Icon5 = new ImageIcon(image5);
-            level3Icon6 = new ImageIcon(image6);
-            level3Icon7 = new ImageIcon(image7);
-            level3Icon8 = new ImageIcon(image8);
-            level3Icon9 = new ImageIcon(image9);
-            level3Icon10 = new ImageIcon(image10);
-            level3Icon11 = new ImageIcon(image11);
-            level3Icon12 = new ImageIcon(image12);
-            level3Icon13 = new ImageIcon(image13);
-            level3Icon14 = new ImageIcon(image14);
-            level3Icon15 = new ImageIcon(image15);
-            level3Icon16 = new ImageIcon(image16);
-
-            JLabel level3Label1 = new JLabel(level3Icon1);
-            JLabel level3Label2 = new JLabel(level3Icon2);
-            JLabel level3Label3 = new JLabel(level3Icon3);
-            JLabel level3Label4 = new JLabel(level3Icon4);
-            JLabel level3Label5 = new JLabel(level3Icon5);
-            JLabel level3Label6 = new JLabel(level3Icon6);
-            JLabel level3Label7 = new JLabel(level3Icon7);
-            JLabel level3Label8 = new JLabel(level3Icon8);
-            JLabel level3Label9 = new JLabel(level3Icon9);
-            JLabel level3Label10 = new JLabel(level3Icon10);
-            JLabel level3Label11 = new JLabel(level3Icon11);
-            JLabel level3Label12 = new JLabel(level3Icon12);
-            JLabel level3Label13 = new JLabel(level3Icon13);
-            JLabel level3Label14 = new JLabel(level3Icon14);
-            JLabel level3Label15 = new JLabel(level3Icon15);
-            JLabel level3Label16 = new JLabel(level3Icon16);
-
-            Timer showCardsTimer = new Timer(1500, new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    level3Label1.setIcon(cardBack);
-                    level3Label2.setIcon(cardBack);
-                    level3Label3.setIcon(cardBack);
-                    level3Label4.setIcon(cardBack);
-                    level3Label5.setIcon(cardBack);
-                    level3Label6.setIcon(cardBack);
-                    level3Label7.setIcon(cardBack);
-                    level3Label8.setIcon(cardBack);
-                    level3Label9.setIcon(cardBack);
-                    level3Label10.setIcon(cardBack);
-                    level3Label11.setIcon(cardBack);
-                    level3Label12.setIcon(cardBack);
-                    level3Label13.setIcon(cardBack);
-                    level3Label14.setIcon(cardBack);
-                    level3Label15.setIcon(cardBack);
-                    level3Label16.setIcon(cardBack);
-                }
-            });
-            showCardsTimer.setRepeats(false);
-            showCardsTimer.start();
-
-
-            add(level3Label1);
-            add(level3Label2);
-            add(level3Label3);
-            add(level3Label4);
-            add(level3Label5);
-            add(level3Label6);
-            add(level3Label7);
-            add(level3Label8);
-            add(level3Label9);
-            add(level3Label10);
-            add(level3Label11);
-            add(level3Label12);
-            add(level3Label13);
-            add(level3Label14);
-            add(level3Label15);
-            add(level3Label16);
-
-            revalidate();
-
-
-
-
-        }
-
+        revalidate();
 
     }
+
+    private void showCards(Card[] cards, int amountOfCards) {
+        Timer showCardsTimer = new Timer(1500, new ActionListener() {
+            int cardsSelected = 0;
+            int card1Number;
+            int card2Number;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                for (int i = 0; i < cards.length; i++) {
+                    cards[i].getImageLabel().setIcon(cards[i].getCardBack());
+                    int finalI = i;
+                    cards[i].getImageLabel().addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            super.mouseClicked(e);
+
+                            if (cardsSelected == 0) {
+                                cards[finalI].getImageLabel().setIcon(cards[finalI].getFrontIcon());
+                                card1Number = finalI;
+                                cardsSelected++;
+                            } else if (cardsSelected == 1) {
+                                cards[finalI].getImageLabel().setIcon(cards[finalI].getFrontIcon());
+                                card2Number = finalI;
+
+
+                                Timer timeBeforeHiding = new Timer(1000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+
+                                        if ((cards[card1Number].getFileName().equals(cards[card2Number].getFileName()))) {
+                                            remove(cards[card1Number].getImageLabel());
+                                            remove(cards[card2Number].getImageLabel());
+
+                                            cardsDeleted += 2;
+
+                                            if (currentLevel == 5 && cardsDeleted == amountOfCards) {
+                                                gameFinishedUpdate();
+                                                menuPanel.finalUpdate();
+                                            } else if (cardsDeleted == amountOfCards) {
+                                                updateBoard(++currentLevel);
+                                                menuPanel.updateMenu(currentLevel);
+                                                cardsDeleted = 0;
+                                            }
+
+                                            revalidate();
+
+                                        } else {
+                                            cards[card1Number].getImageLabel().setIcon(cards[card1Number].getCardBack());
+                                            cards[card2Number].getImageLabel().setIcon(cards[card2Number].getCardBack());
+                                        }
+                                        cardsSelected = 0;
+                                    }
+                                });
+                                timeBeforeHiding.setRepeats(false);
+                                timeBeforeHiding.start();
+                            }
+                        }
+                    })
+                    ;
+                }
+
+            }
+        });
+        showCardsTimer.setRepeats(false);
+        showCardsTimer.start();
+    }
+
+    private void gameFinishedUpdate() {
+        removeAll();
+        repaint();
+        setLayout(null);
+        System.out.println("finale");
+        JLabel finalMessage = new JLabel("Congratulations!");
+        finalMessage.setFont(new Font("Serif", Font.BOLD, 36));
+        finalMessage.setBounds(PairsGame.FRAME_WIDTH / 2 - 100, PairsGame.FRAME_HEIGHT / 2 - 150, 400, 100);
+        add(finalMessage);
+    }
+
+
+    private void addCards(Card[] cards, int amountOfCards) {
+        while (amountOfCards != 0) {
+
+            Random generator = new Random();
+            int randomIndex = generator.nextInt(cards.length);
+            if (!cards[randomIndex].isOnBoard()) {
+                amountOfCards--;
+                cards[randomIndex].setOnBoard(true);
+                add(cards[randomIndex].getImageLabel());
+            }
+        }
+    }
+
 
 }
