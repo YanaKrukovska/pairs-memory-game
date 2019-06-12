@@ -10,6 +10,8 @@ public class PairsGame extends JFrame {
     public final static int PANEL_HEIGHT = FRAME_HEIGHT - TOP_PANEL_HEIGHT;
     private final MenuPanel menuPanel;
     private BoardPanel gameBoard;
+    private int levelCount = 0;
+
 
     public PairsGame() {
 
@@ -33,8 +35,8 @@ public class PairsGame extends JFrame {
 
                         menuPanel.removeAll();
                         menuPanel.repaint();
-                        menuPanel.generateMenu(5);
-                        gameBoard.updateBoard(5);
+                        menuPanel.generateMenu(++levelCount);
+                        gameBoard.updateBoard(levelCount);
 
                     gameBoard.setBounds(0, TOP_PANEL_HEIGHT, FRAME_WIDTH, PANEL_HEIGHT);
                 }
