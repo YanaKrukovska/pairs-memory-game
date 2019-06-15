@@ -119,7 +119,7 @@ public class BoardPanel extends JPanel {
 
                                             cardsDeleted += 2;
 
-                                            if (currentLevel == 5 && cardsDeleted == amountOfCards) {
+                                            if (lastLevelFinished(amountOfCards)) {
                                                 gameFinishedUpdate();
                                                 menuPanel.finalUpdate();
                                             } else if (cardsDeleted == amountOfCards) {
@@ -149,6 +149,10 @@ public class BoardPanel extends JPanel {
         });
         showCardsTimer.setRepeats(false);
         showCardsTimer.start();
+    }
+
+    private boolean lastLevelFinished(int amountOfCards) {
+        return currentLevel == 5 && cardsDeleted == amountOfCards;
     }
 
     private void gameFinishedUpdate() {
