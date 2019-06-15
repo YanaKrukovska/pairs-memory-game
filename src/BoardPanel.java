@@ -50,27 +50,34 @@ public class BoardPanel extends JPanel {
         currentLevel = level;
         setBounds(0, PairsGame.TOP_PANEL_HEIGHT + 2, PairsGame.FRAME_WIDTH, PairsGame.PANEL_HEIGHT);
 
-        if (level == 1) {
-            setLayout(new GridLayout(2, 2));
-            showCards(cardsLevel1, 4);
-            addCards(cardsLevel1, 4);
-        } else if (level == 2) {
-            setLayout(new GridLayout(2, 3));
-            showCards(cardsLevel2, 6);
-            addCards(cardsLevel2, 6);
-        } else if (level == 3) {
-            setLayout(new GridLayout(2, 4));
-            showCards(cardsLevel3, 8);
-            addCards(cardsLevel3, 8);
-        } else if (level == 4) {
-            setLayout(new GridLayout(2, 5));
-            showCards(cardsLevel4, 10);
-            addCards(cardsLevel4, 10);
-        } else if (level == 5) {
-            setLayout(new GridLayout(3, 4));
-            showCards(cardsLevel5,12);
-            addCards(cardsLevel5, 12);
+        switch (currentLevel) {
+            case 1:
+                setLayout(new GridLayout(2, 2));
+                showCards(cardsLevel1, 4);
+                addCards(cardsLevel1, 4);
+                break;
+            case 2:
+                setLayout(new GridLayout(2, 3));
+                showCards(cardsLevel2, 6);
+                addCards(cardsLevel2, 6);
+                break;
+            case 3:
+                setLayout(new GridLayout(2, 4));
+                showCards(cardsLevel3, 8);
+                addCards(cardsLevel3, 8);
+                break;
+            case 4:
+                setLayout(new GridLayout(2, 5));
+                showCards(cardsLevel4, 10);
+                addCards(cardsLevel4, 10);
+                break;
+            case 5:
+                setLayout(new GridLayout(3, 4));
+                showCards(cardsLevel5, 12);
+                addCards(cardsLevel5, 12);
+                break;
         }
+
 
         revalidate();
 
@@ -148,7 +155,6 @@ public class BoardPanel extends JPanel {
         removeAll();
         repaint();
         setLayout(null);
-        System.out.println("finale");
         JLabel finalMessage = new JLabel("Congratulations!");
         finalMessage.setFont(new Font("Serif", Font.BOLD, 36));
         finalMessage.setBounds(PairsGame.FRAME_WIDTH / 2 - 100, PairsGame.FRAME_HEIGHT / 2 - 150, 400, 100);
