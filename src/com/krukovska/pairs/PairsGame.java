@@ -1,3 +1,5 @@
+package com.krukovska.pairs;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,10 +35,10 @@ public class PairsGame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == menuPanel.getOkayButton()) {
 
-                        menuPanel.removeAll();
-                        menuPanel.repaint();
-                        menuPanel.generateMenu(++levelCount);
-                        gameBoard.updateBoard(levelCount);
+                    menuPanel.removeAll();
+                    menuPanel.repaint();
+                    menuPanel.generateMenu(++levelCount);
+                    gameBoard.updateBoard(levelCount);
 
                     gameBoard.setBounds(0, TOP_PANEL_HEIGHT, FRAME_WIDTH, PANEL_HEIGHT);
                 }
@@ -48,7 +50,6 @@ public class PairsGame extends JFrame {
         add(gameBoard);
         setVisible(true);
     }
-
 
 
 }
